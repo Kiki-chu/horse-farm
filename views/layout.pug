@@ -1,0 +1,16 @@
+html
+  head
+    title de Bruijn stud farm
+    link(rel='stylesheet', href='/style.css')
+  body
+    header
+      a(href='/') DE BRUIJN STUD FARM
+      nav
+        a(href='/stock') Studs
+      .basket 
+        if !basket
+            p empty basket
+        else 
+            p= basket.items.reduce((prev, item) => prev + item.qty, 0)
+    .content
+        block content

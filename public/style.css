@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap");
+
+body {
+  margin: 0px;
+  font-family: "Open Sans", sans-serif;
+  background: #242423;
+  color: #cfdbd5;
+}
+
+header {
+  background-color: #333533;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+header > a {
+  color: #f5cb5c;
+  font-weight: 800;
+  font-size: 2em;
+  padding: 10px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+p {
+  color: #cfdbd5;
+}
+
+header > nav {
+  flex: 1;
+}
+
+nav > a {
+  color: #333533;
+  font-weight: 800;
+  background: #e8eddf;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.content {
+  padding: 25px;
+}
+
+.basket {
+  color: #cfdbd5;
+  padding: 10px;
+}
+
+.stock {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stock > .item {
+  width: 50%;
+}
+
+.stock > .item > .wrapper {
+  border: 2px #cfdbd5 solid;
+  margin-right: 200px;
+  margin-bottom: 50px;
+  padding: 10px;
+  position: relative;
+}
+
+.stock > .item > .wrapper > h4 {
+  margin-top: 0px;
+}
+
+.stock > .item > .wrapper > a {
+  color: #333533;
+  background: #e8eddf;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 2em;
+}

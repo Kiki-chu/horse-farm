@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+    h2 Our studs
+    .stock
+        each item in stock.inventory
+            .item
+                .wrapper
+                    a(href='/basket/add/'+item.sku) +
+                    h4= item.name
+                    p stock = #{item.stock}
