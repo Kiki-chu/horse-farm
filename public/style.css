@@ -85,3 +85,31 @@ nav > a {
   line-height: 40px;
   font-size: 2em;
 }
+
+.description {
+  width: 50%;
+}
+
+.description > h4 {
+  margin: 0;
+}
+
+.description > p {
+  margin: 0;
+}
+
+.wrapper > img {
+  max-width: 50px;
+  position: absolute;
+  top: 25px;
+  right: 60px;
+}
+
+.banner > .wrapper2 {
+  position: relative;
+}
+
+.banner > .wrapper2 > img {
+  position: absolute;
+  top: 50px;
+}
