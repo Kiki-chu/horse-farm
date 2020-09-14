@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const mysql = require("mysql");
-const stock = require("./data/stock");
 const Basket = require("./data/basket");
 const baskets = [];
 const cookieparser = require("cookie-parser");
@@ -10,6 +9,23 @@ const cookieparser = require("cookie-parser");
 app.use(cookieparser());
 app.use(express.static("public"));
 app.set("view engine", "pug");
+
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "dazdaUser",
+  password: "mypassword",
+  database: "horses",
+});
+
+app.get("/test", (req, res) => {
+  connection.query("SELECT * FROM inventory", (error, results) => {
+    if (error) {
+      console.log("problem with query", error);
+      return;
+    }
+    res.send(results);
+  });
+});
 
 app.get("/", (req, res) => {
   let basket = baskets.find(
@@ -22,8 +38,14 @@ app.get("/stock", (req, res) => {
   let basket = baskets.find(
     (basket) => basket.shopperId === req.cookies.shopperId
   );
-  console.log(basket);
-  res.render("stock", { stock, basket });
+
+  connection.query("SELECT * FROM inventory", (error, results) => {
+    if (error) {
+      console.log("problem with query", error);
+      return;
+    }
+    res.render("stock", { inventory: results, basket });
+  });
 });
 
 app.get("/basket/add/:sku", (req, res) => {
@@ -46,13 +68,6 @@ app.get("/basket/add/:sku", (req, res) => {
   }
   basket.addItemToBasket(item);
   res.redirect("/stock");
-});
-
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "dazdaUser",
-  password: "mypassword",
-  database: "horses",
 });
 
 connection.connect((err) => {

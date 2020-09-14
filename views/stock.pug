@@ -1,12 +1,13 @@
 extends layout.pug
 
 block content
-    h2 Our studs
+    h2 Our Horses
     .stock
-        each item in stock.inventory
+        each item in inventory
             .item
                 .wrapper
                     a(href='/basket/add/'+item.sku) +
                     h4= item.name
                     p stock = #{item.stock}
+                    p price = £#{item.price}
                     img(src='/imgs/horsey.png', alt='stud')
