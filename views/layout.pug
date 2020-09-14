@@ -11,6 +11,6 @@ html
         if !basket
             p empty basket
         else 
-            p= basket.items.reduce((prev, item) => prev + item.qty, 0)
+            p= basket.length
     .content
         block content
