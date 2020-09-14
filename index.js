@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const mysql = require("mysql");
 const stock = require("./data/stock");
 const Basket = require("./data/basket");
 const baskets = [];
@@ -43,9 +44,23 @@ app.get("/basket/add/:sku", (req, res) => {
     baskets.push(basket);
     res.cookie("shopperId", basket.shopperId);
   }
-  console.log(basket, baskets);
   basket.addItemToBasket(item);
   res.redirect("/stock");
+});
+
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "dazdaUser",
+  password: "mypassword",
+  database: "horses",
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.log("error connecting to Database", err);
+    return;
+  }
+  console.log("Succesfully connected to Database");
 });
 
 app.listen(port, () => {
